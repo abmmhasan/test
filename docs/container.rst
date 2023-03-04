@@ -13,76 +13,72 @@ Dependency Injection (Container)
     di/init
     di/sum-up
 
-Basic usage
------------
+Using the library is pretty straight-forward.
 
-1. Use dependency injection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Use dependency injection
 
-Let’s write code using dependency injection without thinking any DI:
+    Let’s write code using dependency injection without thinking any DI:
 
-.. code-block:: php
+    .. code-block:: php
 
-   class MyInjectableClass
-   {
-       public function somethingHere($doIt, $doThat)
+       class MyInjectableClass
        {
-           // doing something here
-       }
-   }
-
-.. code-block:: php
-
-   class MyAccessorClass
-   {
-       private $injectable;
-
-       public function __construct(MyInjectableClass $injectable)
-       {
-           $this->mailer = $mailer;
+           public function somethingHere($doIt, $doThat)
+           {
+               // doing something here
+           }
        }
 
-       public function set($it, $that)
+    .. code-block:: php
+
+       class MyAccessorClass
        {
-           // Doing something
-           // ....
-           $this->injectable->somethingHere($it, $that);
+           private $injectable;
+
+           public function __construct(MyInjectableClass $injectable)
+           {
+               $this->mailer = $mailer;
+           }
+
+           public function set($it, $that)
+           {
+               // Doing something
+               // ....
+               $this->injectable->somethingHere($it, $that);
+           }
        }
-   }
 
-As we can see, the ``MyAccessorClass`` takes the ``MyInjectableClass`` as a constructor parameter & this is dependency injection!
+    As we can see, the ``MyAccessorClass`` takes the ``MyInjectableClass`` as a constructor parameter & this is dependency injection!
 
-2. Create the container
-~~~~~~~~~~~~~~~~~~~~~~~
+Create the container
 
-Creating the container is as easy as it can be,
+    Creating the container is as easy as it can be,
 
-.. code-block:: php
+    .. code-block:: php
 
-   $container = new AbmmHasan\InterMix\container();
+       $container = new AbmmHasan\InterMix\container();
 
-Then simply register or setOptions as your requirements:
+    Then simply register or setOptions as your requirements:
 
-.. code-block:: php
+    .. code-block:: php
 
-   $container->setOptions(...)
-   $container->register...(...);
+       $container->setOptions(...)
+       $container->register...(...);
 
-3. Create the objects
-~~~~~~~~~~~~~~~~~~~~~
+Create the objects
 
-Without dependency injection
+    Without dependency injection
 
-.. code-block:: php
+    .. code-block:: php
 
-   $mic = new MyInjectableClass();
-   $mac = new MyAccessorClass($mic);
+       $mic = new MyInjectableClass();
+       $mac = new MyAccessorClass($mic);
 
-With our library we can just do:
+    With our library we can just do:
 
-.. code-block:: php
+    .. code-block:: php
 
-   $mac = $container->get(MyAccessorClass::class);
+       $mac = $container->get(MyAccessorClass::class);
 
 The container uses a technique called **autowiring**. This will scan the code and see what
 are the parameters needed in the constructors. Our container uses `PHP’s Reflection

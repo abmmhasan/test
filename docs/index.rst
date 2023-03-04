@@ -15,7 +15,6 @@ Contents
     :maxdepth: 2
     :includehidden:
 
-    introduction
     start
     container
     fence
