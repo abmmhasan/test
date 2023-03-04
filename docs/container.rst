@@ -15,7 +15,7 @@ Dependency Injection (Container)
 
 Using the library is pretty straight-forward.
 
-Use dependency injection
+1: Use dependency injection
 
     Let’s write code using dependency injection without thinking any DI:
 
@@ -50,7 +50,7 @@ Use dependency injection
 
     As we can see, the ``MyAccessorClass`` takes the ``MyInjectableClass`` as a constructor parameter & this is dependency injection!
 
-Create the container
+2: Create the container
 
     Creating the container is as easy as it can be,
 
@@ -65,7 +65,7 @@ Create the container
        $container->setOptions(...)
        $container->register...(...);
 
-Create the objects
+3: Create the objects
 
     Without dependency injection
 
