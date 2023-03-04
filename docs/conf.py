@@ -35,8 +35,8 @@ def get_version():
 # -- Project information -----------------------------------------------------
 
 project = 'abmmhasan/testmyproject'
-copyright = '2012-{year}, hdsfgjhsdf'.format(year = datetime.date.today().strftime('%Y'))
-author = 'author'
+copyright = '2021-{year}, A. B. M. Mahmudul Hasan'.format(year = datetime.date.today().strftime('%Y'))
+author = 'A. B. M. Mahmudul Hasan'
 
 version = get_version().strip()
 release = version
@@ -60,6 +60,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinxcontrib.phpdomain',
+    'myst_parser'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -89,15 +90,15 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_title = "ramseyX/uuXid %s ManXual" % get_version()
+html_title = "abmmhasan/InterMix %s Manual" % get_version()
 html_show_sphinx = False
 
-htmlhelp_basename = 'ramsey-uuid-doc'
+htmlhelp_basename = 'abmmhasan-intermix-doc'
 
 html_context = {
     "display_github": True,
-    "github_user": "ramsXYey",
-    "github_repo": "uuXYid",
+    "github_user": "abmmhasan",
+    "github_repo": "InterMix",
     "github_version": version,
     "conf_py_path": "/docs/",
 }
