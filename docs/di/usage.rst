@@ -4,11 +4,9 @@
 Using the container
 ===================
 
-Simply, initialize using,
+Simply, initialize using either of these lines,
 
 .. code-block:: php
-    :caption: Use either of these lines to initiate the Container
-    :name: container.initiate.example
     $container = AbmmHasan\InterMix\container();
     $container = AbmmHasan\InterMix\Container::instance();
     $container = new AbmmHasan\InterMix\Container();
@@ -43,19 +41,17 @@ implements
 set() & addDefinitions()
 ------------------------
 
-You can set entries directly on the container using either of these:
+You can set entries directly on the container using either set():
 
 .. code:: php
-    :caption: add definition using set() method
-    :name: set.example
 
     $container->set('foo', 'bar');
     $container->set('MyInterface', container('MyClass'));
     $container->set('myClosure', function() { /* ... */ });
 
+or addDefinitions()
+
 .. code:: php
-    :caption: add definition using addDefinitions() method
-    :name: addDefinitions.example
 
     $container->addDefinitions([
         'foo' => 'bar',
@@ -82,9 +78,9 @@ registerClass()
 
 Normally, this method won't be needed unless you need to send in some extra parameter to the constructor.
 
+You don't need registerClass() for this
+
 .. code:: php
-    :caption: you don't need registerClass() for this
-    :name: registerClass.no-need.example
 
     class GithubProfile
     {
@@ -92,9 +88,9 @@ Normally, this method won't be needed unless you need to send in some extra para
         ...
     }
 
+but you will need here if the variable ``$user`` is not defined via set()/addDefinitions()
+
 .. code:: php
-    :caption: but you will need here if the variable $user is not defined via set()/addDefinitions()
-    :name: registerClass.required.example
 
     class GithubProfile
     {
@@ -119,9 +115,9 @@ While resolving through classes, container will look for any property value regi
 **property** resolutions is enabled) & will resolve it. During this if any custom property value is defined with
 ``registerProperty()`` it will resolve it as well.
 
+Register property by class,
+
 .. code:: php
-    :caption: register property by class
-    :name: registerProperty.optional.example
 
     $container->registerProperty('GithubProfile', [
         'someProperty' => 'some value'
@@ -130,9 +126,9 @@ While resolving through classes, container will look for any property value regi
 Container will look for any method registered with ``registerMethod()`` & will resolve it. Even if it is not registered,
 container still may resolve some method, check the container lifecycle for details.
 
+register parameter in a method (also is default method to resolve for that class)
+
 .. code:: php
-    :caption: register parameter in a method (also is default method to resolve for that class)
-    :name: registerMethod.example
 
     $container->registerMethod('GithubProfile', 'aMethod', [
         'user' => 'some value'
@@ -182,7 +178,5 @@ Once container is created it can be chained/piped through (to add/edit method/pr
 But once **unset()** is called, no more chaining. Calling back will just simply initiate new container instance.
 
 .. code:: php
-    :caption: unset the internal instance
-    :name: unset.example
 
     $container->unset();
