@@ -14,9 +14,9 @@ Simply, initialize using either of these lines,
 .. attention::
 
     By default,
-    1. **Autowiring** is enabled
-    2. **Attribute** resolution is disabled
-    3. No default method set
+    * **Autowiring** is enabled
+    * **Attribute** resolution is disabled
+    * No default method set
 
 The container have following options to play with as you see fit,
 
@@ -140,11 +140,11 @@ setOptions()
 Well, as you have seen above, the container provides lots of options. Obviously you can enable/disable them as your requirements.
 Available options are,
 
-- ``injection``: Enable/disable dependency injection (Enabled by default)
-- ``methodAttributes``: Enable/disable attribute resolution on method
-- ``propertyResolution``: Enable/disable property resolution
-- ``propertyAttributes``: Enable/disable attribute resolution on property
-- ``defaultMethod``: Set a default method to be called if method is not set already
+* ``injection``: Enable/disable dependency injection (Enabled by default)
+* ``methodAttributes``: Enable/disable attribute resolution on method
+* ``propertyResolution``: Enable/disable property resolution
+* ``propertyAttributes``: Enable/disable attribute resolution on property
+* ``defaultMethod``: Set a default method to be called if method is not set already
 
 .. attention::
 
@@ -154,10 +154,10 @@ Available options are,
 .. note::
 
     When container scans through the classes, to resolve a method it follows below priority:
-    - Method already provided, using ``call()``
-    - Look for method, registered via ``registerMethod()``
-    - Method provided via ``callOn`` constant
-    - Method name found via ``defaultMethod``
+    #. Method already provided, using ``call()``
+    #. Look for method, registered via ``registerMethod()``
+    #. Method provided via ``callOn`` constant
+    #. Method name found via ``defaultMethod``
 
 split()
 -------
@@ -165,11 +165,11 @@ split()
 Breakdown any recognizable formation to a recognizable callable format ``['class', 'method']`` or ``['closure']``.
 Applicable formats are,
 
-- ``class@method``
-- ``class::method``
-- ``closure()``
-- ``['class', 'method']``
-- ``['class']``
+* ``class@method``
+* ``class::method``
+* ``closure()``
+* ``['class', 'method']``
+* ``['class']``
 
 unset()
 -------
