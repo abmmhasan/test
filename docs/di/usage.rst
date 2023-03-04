@@ -7,16 +7,15 @@ Using the container
 Simply, initialize using either of these lines,
 
 .. code-block:: php
+
     $container = AbmmHasan\InterMix\container();
     $container = AbmmHasan\InterMix\Container::instance();
     $container = new AbmmHasan\InterMix\Container();
 
-.. attention::
-
-    By default,
-    * **Autowiring** is enabled
-    * **Attribute** resolution is disabled
-    * No default method set
+By default,
+* **Autowiring** is enabled
+* **Attribute** resolution is disabled
+* No default method set
 
 The container have following options to play with as you see fit,
 
@@ -151,13 +150,11 @@ Available options are,
     Defaults are; ``injection`` is enabled, rests are disabled. If ``injection`` is disabled rest of the options won't work.
     ``propertyAttributes`` also requires ``propertyResolution`` to be enabled.
 
-.. note::
-
-    When container scans through the classes, to resolve a method it follows below priority:
-    #. Method already provided, using ``call()``
-    #. Look for method, registered via ``registerMethod()``
-    #. Method provided via ``callOn`` constant
-    #. Method name found via ``defaultMethod``
+When container scans through the classes, to resolve a method it follows below priority:
+#. Method already provided, using ``call()``
+#. Look for method, registered via ``registerMethod()``
+#. Method provided via ``callOn`` constant
+#. Method name found via ``defaultMethod``
 
 split()
 -------
