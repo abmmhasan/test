@@ -8,8 +8,8 @@ Dependency Injection (Container)
     :titlesonly:
     :hidden:
 
-    di/initialize
-    di/modify
+    di/understanding
+    di/usage
     di/init
     di/sum-up
 
