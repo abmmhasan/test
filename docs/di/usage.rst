@@ -9,13 +9,20 @@ Simply, initialize using either of these lines,
 .. code-block:: php
 
     $container = AbmmHasan\InterMix\container();
-    $container = AbmmHasan\InterMix\Container::instance();
-    $container = new AbmmHasan\InterMix\Container();
+    $container = AbmmHasan\InterMix\DI\Container::instance();
+    $container = new AbmmHasan\InterMix\DI\Container();
 
 By default,
+
 * **Autowiring** is enabled
 * **Attribute** resolution is disabled
 * No default method set
+
+.. tip::
+
+    You can get multiple ``container()`` instance completely isolated from each other. Simply send in an alias/identifier
+    in 2nd parameter. Identifier makes sure to keep it isolated from another identifier.
+
 
 The container have following options to play with as you see fit,
 
@@ -40,7 +47,7 @@ implements
 set() & addDefinitions()
 ------------------------
 
-You can set entries directly on the container using either set():
+You can set entries directly on the container using either ``set()``:
 
 .. code:: php
 
@@ -48,11 +55,12 @@ You can set entries directly on the container using either set():
     $container->set('MyInterface', container('MyClass'));
     $container->set('myClosure', function() { /* ... */ });
 
-or addDefinitions()
+or ``addDefinitions()``
 
 .. code:: php
 
     $container->addDefinitions([
+        'definition 1' => 'class reference / closure / any mixed value',
         'foo' => 'bar',
         'MyInterface' => 'MyClass',
         'myClosure' => function() { /* ... */ }
@@ -77,7 +85,7 @@ registerClass()
 
 Normally, this method won't be needed unless you need to send in some extra parameter to the constructor.
 
-You don't need registerClass() for this
+You don't need ``registerClass()`` for this
 
 .. code:: php
 
@@ -151,15 +159,17 @@ Available options are,
     ``propertyAttributes`` also requires ``propertyResolution`` to be enabled.
 
 When container scans through the classes, to resolve a method it follows below priority:
-#. Method already provided, using ``call()``
-#. Look for method, registered via ``registerMethod()``
-#. Method provided via ``callOn`` constant
-#. Method name found via ``defaultMethod``
+
+* Method already provided, using ``call()``
+* Look for method, registered via ``registerMethod()``
+* Method provided via ``callOn`` constant
+* Method name found via ``defaultMethod``
 
 split()
 -------
 
-Breakdown any recognizable formation to a recognizable callable format ``['class', 'method']`` or ``['closure']``.
+Breakdown any recognizable formation to a recognizable callable format ``['class', 'method']`` or ``['closure']``. Will
+be called automatically if 1st parameter in ``container()`` function is passed.
 Applicable formats are,
 
 * ``class@method``
@@ -167,6 +177,15 @@ Applicable formats are,
 * ``closure()``
 * ``['class', 'method']``
 * ``['class']``
+
+lock()
+------
+
+Once this method is called, you won't be able to modify the options or add anything to the class.
+
+.. code:: php
+
+    $container->lock();
 
 unset()
 -------
